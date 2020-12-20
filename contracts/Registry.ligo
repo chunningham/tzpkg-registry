@@ -5,7 +5,7 @@ type package_info is record [
 
 type registry is big_map (string, package_info)
 
-type registry_entry is string * package_info
+type registry_entry is string * string
 
 type action is
 | Register of registry_entry
@@ -19,9 +19,12 @@ function register_package (const entry : registry_entry; const package_registry 
     Some (package) -> if package.owner =/= Tezos.source then {
         failwith ("Access Denied.");
       } else {
-        package_registry[entry.0] := entry.1;
+        package_registry[entry.0] := package with record [path = entry.1]
       }
-  | None -> package_registry[entry.0] := entry.1
+  | None -> package_registry[entry.0] := record [
+          owner = Tezos.source;
+          path  = entry.1;
+        ]
   end} with package_registry
 
 function deregister_package (const name : string; const package_registry : registry) : registry is

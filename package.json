@@ -1,0 +1,23 @@
+{
+  "name": "tzpkg-registry",
+  "version": "0.1.0",
+  "description": "Tezos Package Manager registry contract",
+  "dependencies": {},
+  "devDependencies": {
+    "ganache-cli": "^6.10.0-tezos.1"
+  },
+  "scripts": {
+    "start-sandbox": "ganache-cli --flavor tezos --seed alice"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chunningham/tzpkg-registry.git"
+  },
+  "keywords": [
+    "tezos",
+    "ligo",
+    "tzpkg"
+  ],
+  "author": "Charles Cunningham <c.a.cunningham6@gmail.com>",
+  "license": "MIT"
+}
